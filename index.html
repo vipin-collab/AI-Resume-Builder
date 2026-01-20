@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI Resume Builder</title>
+
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
+</head>
+
+<body class="theme-light">
+
+<header class="topbar">
+  <h1>AI Resume Builder</h1>
+  <div class="theme-controls">
+    <select id="themeSelect">
+      <option value="theme-light">Light</option>
+      <option value="theme-dark">Dark</option>
+      <option value="theme-gradient">Gradient</option>
+    </select>
+    <select id="templateSelect">
+      <option value="clean">Clean</option>
+      <option value="modern">Modern</option>
+      <option value="compact">Compact</option>
+    </select>
+  </div>
+</header>
+
+<div class="container">
+  <!-- SIDEBAR STEPS -->
+  <aside class="sidebar">
+    <button class="step active" data-panel="1">1. Personal</button>
+    <button class="step" data-panel="2">2. Skills</button>
+    <button class="step" data-panel="3">3. Projects</button>
+    <button class="step" data-panel="4">4. Education</button>
+    <button class="step" data-panel="5">5. Experience</button>
+    <button class="step" data-panel="6">6. Certifications</button>
+  </aside>
+
+  <!-- FORM AREA -->
+  <section class="form-area">
+    <!-- STEP 1 -->
+    <div class="panel active" id="panel1">
+      <h2>Personal Details</h2>
+      <label>Name</label><input id="name" type="text">
+      <label>Role</label><input id="role" type="text">
+      <label>Email</label><input id="email" type="text">
+      <label>Phone</label><input id="phone" type="text">
+      <button class="next" data-next="2">Next →</button>
+    </div>
+    <!-- STEP 2 -->
+    <div class="panel" id="panel2">
+      <h2>Skills</h2>
+      <textarea id="skills" placeholder="HTML, CSS, JavaScript..."></textarea>
+      <button id="aiSkills">AI Suggest</button>
+      <button class="next" data-next="3">Next →</button>
+      <button class="back" data-back="1">← Back</button>
+    </div>
+    <!-- STEP 3 -->
+    <div class="panel" id="panel3">
+      <h2>Projects</h2>
+      <textarea id="projects" placeholder="One project per line"></textarea>
+      <button id="aiProjects">AI Suggest</button>
+      <button class="next" data-next="4">Next →</button>
+      <button class="back" data-back="2">← Back</button>
+    </div>
+    <!-- STEP 4 -->
+    <div class="panel" id="panel4">
+      <h2>Education</h2>
+      <textarea id="education" placeholder="Degree, Institution, Year"></textarea>
+      <button class="next" data-next="5">Next →</button>
+      <button class="back" data-back="3">← Back</button>
+    </div>
+    <!-- STEP 5 -->
+    <div class="panel" id="panel5">
+      <h2>Experience</h2>
+      <textarea id="experience" placeholder="Role, Company, Duration"></textarea>
+      <button class="next" data-next="6">Next →</button>
+      <button class="back" data-back="4">← Back</button>
+    </div>
+    <!-- STEP 6 -->
+    <div class="panel" id="panel6">
+      <h2>Certifications</h2>
+      <textarea id="certification" placeholder="Certification, Platform, Year"></textarea>
+      <button id="downloadBtn">Download PDF</button>
+      <button class="back" data-back="5">← Back</button>
+    </div>
+  </section>
+
+  <!-- RESUME PREVIEW -->
+  <section class="preview-area" id="resumePreview">
+    <div id="resumeTemplate" class="template clean">
+      <h1 id="out-name">Your Name</h1>
+      <h3 id="out-role">Your Role</h3>
+      <p id="out-email">email@example.com</p>
+      <p id="out-phone">Phone</p>
+      <h2>Education</h2><p id="out-education"></p>
+      <h2>Experience</h2><p id="out-experience"></p>
+      <h2>Projects</h2><p id="out-projects"></p>
+      <h2>Skills</h2><p id="out-skills"></p>
+      <h2>Certifications</h2><p id="out-certification"></p>
+    </div>
+  </section>
+</div>
+
+<!-- ===== ATS CHECKER ===== -->
+<section class="ats-checker">
+  <div class="ats-container">
+    <h2>ATS Resume Checker</h2>
+    <p>Check your resume for ATS compatibility.</p>
+    <button id="checkATS">Run ATS Check</button>
+    <div id="atsResult"></div>
+  </div>
+</section>
+
+<!-- ===== CONTACT US ===== -->
+<section class="contact-us">
+  <div class="contact-container">
+    <h2>Contact Us</h2>
+    <p>If you face any issues with your resume, please fill out the form below:</p>
+    <form id="contactForm">
+      <input type="text" id="contactName" placeholder="Your Name" required>
+      <input type="text" id="contactPhone" placeholder="Contact Number" required>
+      <input type="email" id="contactEmail" placeholder="Email Address" required>
+      <input type="text" id="contactAddress" placeholder="Address">
+      <textarea id="contactMessage" placeholder="Your Message" rows="4"></textarea>
+      <button type="submit">Submit</button>
+    </form>
+    <p class="footer-note">© 2026 AI Resume Builder. All Rights Reserved.</p>
+  </div>
+</section>
+
+<script src="app.js"></script>
+</body>
+</html>
